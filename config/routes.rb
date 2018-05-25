@@ -1,6 +1,12 @@
-# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
-  resources :posts
+  get "posts/index" => "posts#index"
+  get "posts/new" => "posts#new"
+  post "posts/create" => "posts#create"
+
+
   get "/" => "home#top"
   get "about" => "home#about"
+
+
+
 end

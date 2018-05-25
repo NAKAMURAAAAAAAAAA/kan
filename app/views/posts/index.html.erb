@@ -1,29 +1,10 @@
-﻿<p id="notice"><%= notice %></p>
-
-<h1>ポスト</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="main posts-index">
+  <div class="container">
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Postttt', new_post_path %>
+      <div class="posts-index-item">
+      <%= post.content%>
+      </div>
+      <% end %>
+   </div>
+</div>
+         
