@@ -10,7 +10,6 @@ class PostsController < ApplicationController
   def create
   @post = Post.new(
       content: params[:content],
-      user_id: @current_user.id,
     )
     
     if @post.save
@@ -19,6 +18,10 @@ class PostsController < ApplicationController
           render("posts/new")
     end
 
+  end
+  
+  def show
+  @post = Post.find_by(id: params[:id])
   end
 
 
