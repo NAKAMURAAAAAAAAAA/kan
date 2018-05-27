@@ -16,14 +16,13 @@
   <body>
     <header>
       <div class="header-logo">
-      <% if @current_user %>
-          <%= link_to(image_tag('icon.png'), "/posts/index") %>
+        <% if @current_user %>
+          <%= link_to("TweetApp", "/posts/index") %>
         <% else %>
-          <%= link_to(image_tag('icon.png'), "/") %>
+          <%= link_to("TweetApp", "/") %>
         <% end %>
       </div>
       <ul class="header-menus">
-        
         <% if @current_user %>
           <li>
             <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
@@ -42,7 +41,7 @@
           </li>
         <% else %>
           <li>
-            <%= link_to("WorkOutとは", "/about") %>
+            <%= link_to("TweetAppとは", "/about") %>
           </li>
           <li>
             <%= link_to("新規登録", "/signup") %>
