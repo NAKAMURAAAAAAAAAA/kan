@@ -12,7 +12,7 @@
         
         <!-- フォームの送信先を指定してください -->
         <%= form_tag("/users/#{@user.id}/update", {multipart: true}) do %>
-          <p>ユーザー名</p>
+          <p>ユーザー名 </p>
           <!-- name属性を設定してください -->
           <input name="name" value="<%= @user.name %>">
           <p>メールアドレス</p>
