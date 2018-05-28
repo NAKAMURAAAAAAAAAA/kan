@@ -1,15 +1,22 @@
 class PostsController < ApplicationController
   before_action :authenticate_user
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
+
   
   def index
     @posts = Post.all.order(created_at: :desc)
+  end
+  
+  def timeline
+    @relationships = Relationship.where(following_id: @current_user)
   end
   
   def show
     @post = Post.find_by(id: params[:id])
     @user = @post.user
     @likes_count = Like.where(post_id: @post.id).count
+    @comments = Comment.where(post_id: @post.id)
+    @comments_count = Comment.where(post_id: @post.id).count
   end
   
   def new
@@ -18,29 +25,39 @@ class PostsController < ApplicationController
   
   def create
 
-    @post = Post.new(
-    content: params[:content],
-    user_id: @current_user.id,
-  )
-    @post.save
-    
-  if params[:picture]
-   @post.picture_name = "#{@post.id}.jpg"
-   picture = params[:picture]
-   File.binwrite("public/post_pictures/#{@post.picture_name}", picture.read)
-  end
-
-    if @post.save
-        redirect_to("/posts/index")
-        else
-        render("posts/new")
+      @post = Post.new(
+      content: params[:content],
+      user_id: @current_user.id,
+    )
+      @post.save
+      
+    if params[:picture]
+     @post.picture_name = "#{@post.id}.jpg"
+     picture = params[:picture]
+     File.binwrite("public/post_pictures/#{@post.picture_name}", picture.read)
     end
-end
 
+      if @post.save
+          redirect_to("/posts/index")
+          else
+          render("posts/new")
+      end
+  end
+  
+  def edit
+    @post = Post.find_by(id: params[:id])
+  end
   
   def update
     @post = Post.find_by(id: params[:id])
     @post.content = params[:content]
+    
+    if params[:picture]
+     @post.picture_name = "#{@post.id}.jpg"
+     picture = params[:picture]
+     File.binwrite("public/post_pictures/#{@post.picture_name}", picture.read)
+    end
+    
     if @post.save
       flash[:notice] = "投稿を編集しました"
       redirect_to("/posts/index")

@@ -33,6 +33,11 @@
       <% end %>
       <% @likes_count = Like.where(post_id: post.id).count %>
       <%= @likes_count %>
+<!-- Comment数開始 -->
+      <span class="fas fa-comment-alt"></span>
+      <% @comments_count = Comment.where(post_id: post.id).count %>
+      <%= @comments_count %>
+<!-- Comment数開始終了 -->
 </div>
 <!-- Like数終了 -->
 
