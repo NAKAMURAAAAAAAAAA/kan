@@ -21,6 +21,7 @@ class UsersController < ApplicationController
       email: params[:email],
       image_name: "default_user.jpg",
       password: params[:password],
+      single_word: params[:single_word]
     )
     @user.save
     
@@ -39,7 +40,6 @@ class UsersController < ApplicationController
     end
   end
 
-  
   def edit
     @user = User.find_by(id: params[:id])
   end
@@ -48,7 +48,8 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @user.name = params[:name]
     @user.email = params[:email]
-    
+    @user.single_word = params[:single_word]
+
     if params[:image]
       @user.image_name = "#{@user.id}.jpg"
       image = params[:image]
