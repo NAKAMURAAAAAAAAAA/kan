@@ -17,21 +17,26 @@ class PostsController < ApplicationController
   end
   
   def create
+
     @post = Post.new(
-      content: params[:content],
-      user_id: @current_user.id
-    )
+    content: params[:content],
+    user_id: @current_user.id,
+  )
+    @post.save
+    
+  if params[:picture]
+   @post.picture_name = "#{@post.id}.jpg"
+   picture = params[:picture]
+   File.binwrite("public/post_pictures/#{@post.picture_name}", picture.read)
+  end
+
     if @post.save
-      flash[:notice] = "投稿を作成しました"
-      redirect_to("/posts/index")
-    else
-      render("posts/new")
+        redirect_to("/posts/index")
+        else
+        render("posts/new")
     end
-  end
-  
-  def edit
-    @post = Post.find_by(id: params[:id])
-  end
+end
+
   
   def update
     @post = Post.find_by(id: params[:id])

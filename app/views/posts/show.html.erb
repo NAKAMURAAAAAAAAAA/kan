@@ -5,6 +5,15 @@
         <img src="<%= "/user_images/#{@user.image_name}" %>">
         <%= link_to(@user.name, "/users/#{@user.id}") %>
       </div>
+
+      <!-- 写真追加箇所 開始 -->
+      <% if @post.picture_name %>
+      <div class="post-picture-name">
+      <img src="<%= "/post_pictures/#{@post.picture_name}" %>">
+      </div>
+      <% end %>
+      <!-- 写真追加箇所 終了 -->
+
       <p>
         <%= @post.content %>
       </p>
