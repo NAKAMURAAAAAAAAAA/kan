@@ -20,8 +20,16 @@ class UsersController < ApplicationController
       name: params[:name],
       email: params[:email],
       image_name: "default_user.jpg",
-      password: params[:password]
+      password: params[:password],
     )
+    @user.save
+    
+     if params[:image]
+      @user.image_name = "#{@user.id}.jpg"
+      image = params[:image]
+      File.binwrite("public/user_images/#{@user.image_name}", image.read)
+     end
+    
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "ユーザー登録が完了しました"
@@ -30,6 +38,7 @@ class UsersController < ApplicationController
       render("users/new")
     end
   end
+
   
   def edit
     @user = User.find_by(id: params[:id])
