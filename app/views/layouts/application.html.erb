@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html>
-  <!-- favicon --!>
+  <!-- favicon -->
   <%= favicon_link_tag 'favicon.jpg'%>
   
   <head>
+  <!-- responsibe design s -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- responsibe design e -->
+
+    <title>WorkOut</title>
+    <%= csrf_meta_tags %>
+
     <title>WorkOut</title>
     <%= csrf_meta_tags %>
 
@@ -11,7 +18,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-  </head>
+    </head>
 
   <body>
     <header>
@@ -51,6 +58,9 @@
           </li>
         <% end %>
       </ul>
+      <%= link_to("/users/index")do %>
+          <span class="fas fa-users friends-btn"></span>
+      <% end %>
     </header>
 
     <% if flash[:notice] %>
@@ -58,6 +68,46 @@
         <%= flash[:notice] %>
       </div>
     <% end %>
+
+    <footer>
+      <div>
+      <ul class ="footer-menus">
+      <% if @current_user %>
+      <li>
+      <%= link_to("/posts/index")do %>
+      <span class="fas fa-home"></span>
+      <% end %>
+      </li>
+      <li>
+      <%= link_to("/posts/new")do %>
+      <span class="far fa-plus-square"></span>
+      <% end %>      
+      </li>
+      <li>
+      <%= link_to("/users/#{@current_user.id}/likes")do %>
+      <span class="fas fa-heart"></span>
+      <% end %>      
+      </li>
+      <li>
+      <%= link_to("/users/#{@current_user.id}")do %>
+      <span class="fas fa-user"></span>
+      <% end %>      
+      </li>
+      <% else %>
+      <li>
+      <%= link_to("WorkOutとは", "/about") %>
+      </li>
+      <li>
+      <%= link_to("新規登録", "/signup") %>
+      </li>
+      <li>
+      <%= link_to("ログイン", "/login") %>
+      </li>
+      <% end %>
+
+      </ul>
+      </div>
+    </footer>
     
     <%= yield %>
   </body>
