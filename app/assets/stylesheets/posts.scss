@@ -6,43 +6,65 @@
   box-shadow: 0 2px 6px #c1ced7;
 }
 
-.post-left img {
-  width: 50px;
-  height: 50px;
+.post-high img {
+  width: 40px;
+  height: 40px;
   border-radius: 40%;
   box-shadow: 0 2px 6px #c1ced7;
   object-fit: cover;
  }
 
-.post-user-name a {
+.post-high a {
   font-weight: 600;
+  padding-left:20px;
 }
 
-.post-user-name a:hover {
+.post-high a:hover {
   color: #3ecdc6;
 }
 
-.post-left {
-  float: left;
-  width: 10%;
+.post-high {
+  height: 30px;
+  width: 100%;
+  float:left;
+  display: flex;
+	align-items: center;
 }
 
-.post-right {
+.post-down {
   float: left;
-  width: 90%;
-  padding-left: 25px;
-  text-align: left;
+  height:auto;
+  margin-top: 20px; 
+  width: 100%;
+  max-width: 600px
 }
 
 .post-index-picture img {
   max-width : 100% ;
   height : auto ;
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  height: auto;
   border-radius: 0%;
   box-shadow: 0 2px 6px #c1ced7;
   vertical-align: middle;
   object-fit: cover;
+  text-align:center
+}
+
+@media (max-width:670px){
+  .posts-index-item {
+    padding: 20px 0px;
+  }
+
+  .post-high {
+  padding-left:10px;  
+  }
+
+  .post-down a{
+  padding-left:10px; 
+  }
+
+
 }
 
 /* posts/show ================================ */

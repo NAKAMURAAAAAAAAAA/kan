@@ -63,6 +63,14 @@ body {
   clear: both;
 }
 
+@media (max-width:670px){
+  .container {
+    margin: 0px 0px;
+    padding: 0px;
+    clear: both;
+  }
+}
+
 /* ヘッダー ================================ */
 header {
   height: 50px;
@@ -257,6 +265,14 @@ header {
   clear: both;
 }
 
+ /*スマホ用*/
+ @media (max-width:670px){
+  .form {
+    margin: 0px 0px;
+    padding: 0px;
+  }
+}
+
 /* フッダー ================================ */
 footer {
   height: 50px;
@@ -307,7 +323,7 @@ footer {
   background: rgb(251, 170, 88);
   text-align: center;
   position: absolute;
-  top: 64px;
+  top: 50px;
   z-index: 10;
   width: 100%;
   border-radius: 0 0 2px 2px;
