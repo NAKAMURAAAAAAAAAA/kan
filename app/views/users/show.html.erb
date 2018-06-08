@@ -23,14 +23,43 @@
     
     <% @user.posts.each do |post| %>
       <div class="posts-index-item">
-        <div class="post-left">
+        <div class="post-high">
           <img src="<%= "/user_images/#{post.user.image_name}" %>">
+           <%= link_to(post.user.name, "/users/#{post.user.id}") %>
         </div>
-        <div class="post-right">
-          <div class="post-user-name">
-            <%= link_to(post.user.name, "/users/#{post.user.id}") %>
-          </div>
+        <div class="post-down">
+          <% if post.picture_name %>
+            <div class="post-index-picture">
+             <img src="<%= "/post_pictures/#{post.picture_name}" %>">
+            </div>
+          <% end %>
+<!-- Like数開始 -->
+<div>
+      <% if Like.find_by(user_id: @current_user.id, post_id: post.id)%>
+      <%= link_to("/likes/#{post.id}/destroy", {method: "post"})do %>
+        <span class="fa fa-heart like-btn-unlike"></span>
+        <% end %>
+      <% else %>
+        <%= link_to("/likes/#{post.id}/create", {method: "post"})do %>
+        <span class="fa fa-heart like-btn"></span>
+        <% end %>
+      <% end %>
+      <% @likes_count = Like.where(post_id: post.id).count %>
+      <%= @likes_count %>
+<!-- Comment数開始 -->
+        <%= link_to("/posts/#{post.id}")do %>
+        <span class="fas fa-comment-alt"></span>
+        <% end %>
+      <% @comments_count = Comment.where(post_id: post.id).count %>
+      <%= @comments_count %>
+<!-- Comment数開始終了 -->
+</div>
+<!-- Like数終了 -->
+
           <%= link_to(post.content, "/posts/#{post.id}") %>
+      <div class="post-time">
+        <%= post.created_at %>
+      </div>
         </div>
       </div>
     <% end %>

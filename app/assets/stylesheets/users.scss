@@ -2,13 +2,13 @@
 
 .users-heading {
   font-weight: 300;
-  margin: 60px 0 20px;
-  font-size: 48px;
+  margin: 10px 0 10px;
+  font-size: 20px;
   color: #bcc8d4;
 }
 
 .users-index-item {
-  padding: 20px 30px;
+  padding: 10px 15px;
   background-color: white;
   overflow: hidden;
   box-shadow: 0 2px 6px #c1ced7;
@@ -47,31 +47,30 @@
 
 /* users/show ================================ */
 .user {
+  width:100%;
   margin-top: 10px;
   margin-bottom: 20px;
   text-align: left;
   overflow: hidden;
-  height:auto; 
+  float: left;
 }
 
 .user-left{
+ float: left;
  width:30%;
 }
 
 .user-right{
- width:60%;
- padding-top: 50px;
- padding-left: 25px;
- text-align: left;
- vertical-align: middle;
+ width:70%;
+ text-align: center;
 }
 
 .user-single-word{
   width:100%;
-  padding:5px 5px 5px;
+  padding:0px 10px;
   text-align: left;
   overflow: hidden;
-  margin:0px 0px;
+  word-wrap: break-word;
 }
 
 .user img {
@@ -79,7 +78,7 @@
   height: 80px;
   border-radius: 40%;
   box-shadow: 0 2px 6px #c1ced7;
-  
+  margin-left: 10px;
   object-fit: cover;
 }
 
@@ -87,12 +86,14 @@
   font-size: 20px;
   font-weight: 600;
   line-height: 1.2;
+  margin: 0 auto;
+  vertical-align: middle;
 }
 
 .user p {
   font-size: 13px;
   margin-bottom: 15px;
-  text-align: left
+  text-align: left;
 }
 
 .user a {

@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <!-- favicon -->
-  <%= favicon_link_tag 'favicon.jpg'%>
-  
+
   <head>
   <!-- responsibe design s -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,11 +56,13 @@
           </li>
         <% end %>
       </ul>
+      <% if @current_user %>
       <%= link_to("/users/index")do %>
           <span class="fas fa-users friends-btn"></span>
       <% end %>
+      <% end %>
     </header>
-
+    
     <% if flash[:notice] %>
       <div class="flash">
         <%= flash[:notice] %>

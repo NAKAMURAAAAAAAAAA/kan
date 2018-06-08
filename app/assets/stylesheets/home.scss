@@ -65,7 +65,8 @@ body {
 
 @media (max-width:670px){
   .container {
-    margin: 0px 0px;
+    margin-top: 0px;
+    margin-bottom: 60px;
     padding: 0px;
     clear: both;
   }
@@ -207,6 +208,16 @@ header {
   width: 84%;
 }
 
+/*スマホ用*/
+@media (max-width:670px){
+  .about-main h2 {
+    font-size: 40px;
+  }
+  .about-main p {
+    font-size: 15px;
+  }
+}
+
 /* フォーム================================ */
 .form {
   max-width: 600px;
@@ -322,7 +333,7 @@ footer {
   color: white;
   background: rgb(251, 170, 88);
   text-align: center;
-  position: absolute;
+  position: fixed;
   top: 50px;
   z-index: 10;
   width: 100%;
